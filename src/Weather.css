@@ -69,6 +69,10 @@ video {
   color: #4a4a4a;
 }
 
+.current-date {
+  font-size: 20px;
+}
+
 .Weather ul {
   margin: 0;
   padding: 0;

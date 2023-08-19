@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
 import Signature from "./Signature";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -14,6 +15,7 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
       wind: response.data.wind.speed,
+      date: new Date(response.data.dt * 1000),
       city: response.data.name,
       country: response.data.sys.country,
       icon: response.data.weather[0].icon,
@@ -49,8 +51,11 @@ export default function Weather(props) {
           <div className="col-1">
             <i className="fa-solid fa-temperature-low icon"></i>
           </div>
-        </div>
-        <h5> Today is Saturday, Aug 19 2023 - 12:23 pm</h5>
+        </div>{" "}
+        <span className="current-date">
+          <FormattedDate date={weatherData.date}/>
+          Today is Saturday, Aug 19 2023 - 12:23 pm
+        </span>
         <h1 className="mb-3">
           {weatherData.city} - {weatherData.country}
         </h1>
