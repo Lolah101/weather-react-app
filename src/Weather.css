@@ -1,0 +1,144 @@
+/* Video Setup*/
+
+video {
+  object-fit: cover;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: opacity 600ms ease-out;
+}
+.light-video {
+  opacity: 1;
+}
+.dark-video {
+  opacity: 0;
+}
+
+/*Swap Theme Icon*/
+
+.swap {
+  color: #4a4a4a;
+  display: block;
+  font-size: 20px;
+  margin: 40px auto;
+  border: 0;
+  background: transparent;
+  transform: rotate(180deg);
+  transition: transform 300ms ease-out;
+}
+
+.swap:hover {
+  transform: scale(1.1);
+}
+
+.icon {
+  font-size: 30px;
+  color: #4a4a4a;
+}
+
+.Weather {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-family: Arial, sans-serif;
+  padding: 36px;
+  color: #4a4a4a;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  box-shadow: 0px 0px 30px rgba(87, 40, 1, 0.4);
+  max-width: 800px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  transition: background-color 300ms ease-out;
+}
+
+.Weather h1 {
+  font-size: 30px;
+  font-weight: 100;
+  margin: 20px 0 0 0;
+  line-height: 29px;
+  color: #4a4a4a;
+}
+
+.Weather ul {
+  margin: 0;
+  padding: 0;
+}
+
+.Weather li {
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 19px;
+  list-style: none;
+  line-height: 2;
+}
+
+.Weather img {
+  height: 100px;
+}
+
+.Weather .temperature {
+  font-weight: bold;
+  color: #4a4a4a;
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.main-temperature .unit {
+  font-size: 26px;
+  position: relative;
+  top: -15px;
+  margin-left: -8px;
+  font-weight: 400;
+}
+
+/* Footer/Signature */
+.signature {
+  font-family: monospace;
+  text-align: center;
+  margin-top: 18px;
+  color: #4a4a4a;
+}
+
+.signature a {
+  color: #4a4a4a;
+}
+
+footer {
+  font-size: 11px;
+}
+
+/* ----- Dark Theme Setting -------- */
+
+/* Swap Theme Icon */
+
+.dark {
+  color: #dedede;
+}
+
+.dark .swap {
+  color: #dedede;
+  transform: rotate(180deg);
+  transition: transform 300ms ease-out;
+}
+.dark .swap:hover {
+  transform: scale(1.1);
+}
+
+/* Video Setup */
+.dark .light-video {
+  opacity: 0;
+}
+
+.dark .dark-video {
+  opacity: 1;
+}
+
+.dark .Weather {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 30px rgb(5, 36, 2);
+}
