@@ -19,7 +19,8 @@ export default function Weather(props) {
       date: new Date(response.data.dt * 1000),
       city: response.data.name,
       country: response.data.sys.country,
-      iconURL: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
+
       //response.data.weather[0].icon,
       realFeel: response.data.main.feels_like,
       coordinates: response.data.coord,

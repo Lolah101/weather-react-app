@@ -86,7 +86,7 @@ video {
   line-height: 2;
 }
 
-.Weather img {
+.Weather canvas {
   height: 150px;
   margin-top: 10px;
 }
