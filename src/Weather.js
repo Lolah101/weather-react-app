@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Weather.css";
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import Signature from "./Signature";
-import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     setWeatherData({
       ready: true,
@@ -18,17 +19,34 @@ export default function Weather(props) {
       date: new Date(response.data.dt * 1000),
       city: response.data.name,
       country: response.data.sys.country,
-      icon: response.data.weather[0].icon,
+      iconURL: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      //response.data.weather[0].icon,
       realFeel: response.data.main.feels_like,
       coordinates: response.data.coord,
     });
+  }
+  function search() {
+    const apiKey = "3c2bf98f1595a35c95c1c79689018255";
+
+    let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiURL).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    //search for a city
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
   }
   if (weatherData.ready) {
     return (
       <div className="Weather">
         <div className="row mb-3">
           <div className="col-11 search">
-            <form className="input-group">
+            <form className="input-group" onSubmit={handleSubmit}>
               <button
                 className="btn btn-outline-secondary location-icon"
                 type="button"
@@ -39,6 +57,7 @@ export default function Weather(props) {
                 type="search"
                 placeholder="Enter a city . . ."
                 className="form-control search-bar"
+                onChange={handleCityChange}
               />
               <button
                 className="btn btn-outline-secondary search-icon"
@@ -52,64 +71,12 @@ export default function Weather(props) {
             <i className="fa-solid fa-temperature-low icon"></i>
           </div>
         </div>{" "}
-        <span className="current-date">
-          <FormattedDate date={weatherData.date}/>
-          Today is Saturday, Aug 19 2023 - 12:23 pm
-        </span>
-        <h1 className="mb-3">
-          {weatherData.city} - {weatherData.country}
-        </h1>
-        <div className="row ">
-          <div className="col-6 col-md-4 ">
-            <div className="main-temperature">
-              <span className="temperature">
-                {" "}
-                {Math.round(weatherData.temperature)}
-              </span>
-              <span className="unit"> °C</span>
-
-              <span className="details text-capitalize">
-                {weatherData.description}
-              </span>
-              <span className="details">
-                {" "}
-                <strong>
-                  {Math.round(weatherData.maxTemp)}
-                  <span className="unit-s"> °C</span>
-                </strong>{" "}
-                {Math.round(weatherData.minTemp)}
-                <span className="unit-s"> °C</span>{" "}
-              </span>
-            </div>
-          </div>
-          <div className="col-6 col-md-4 ">
-            <img src={weatherData.icon} alt={weatherData.description} />
-          </div>
-          <div className="col-12 col-md-4 weather-icon-big details">
-            <span className="details">
-              <i class="fa-solid fa-temperature-three-quarters"></i>
-              Feels like: {Math.round(weatherData.realFeel)}°c
-            </span>
-
-            <span className="details">
-              <i class="fa-solid fa-droplet"></i>
-              Humidity: {weatherData.humidity}%
-            </span>
-            <span className="details">
-              <i class="fa-solid fa-wind"></i>
-              Wind : {Math.round(weatherData.wind)} km/h
-            </span>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
         <Signature />
       </div>
     );
   } else {
-    const apiKey = "3c2bf98f1595a35c95c1c79689018255";
-
-    let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-    axios.get(apiURL).then(handleResponse);
-
+    search();
     return "Loading page ......";
   }
 }
