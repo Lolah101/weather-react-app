@@ -3,6 +3,7 @@ import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import Signature from "./Signature";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -23,7 +24,7 @@ export default function Weather(props) {
 
       //response.data.weather[0].icon,
       realFeel: response.data.main.feels_like,
-      coordinates: response.data.coord,
+      coordinates: response.data.coord
     });
   }
   function search() {
@@ -73,6 +74,7 @@ export default function Weather(props) {
           </div>
         </div>{" "}
         <WeatherInfo data={weatherData} />
+        <WeatherForecast coordinates={weatherData.coordinates} />
         <Signature />
       </div>
     );

@@ -20,13 +20,20 @@ export default function WeatherIcon(props) {
     "13d": "SNOW",
     "13n": "SNOW",
     "50d": "FOG",
-    "50n": "FOG"
+    "50n": "FOG",
+  };
+
+  // Default values for the weather icon display
+  const defaults = {
+    color: "#976DF3",
+    size: 160,
+    animate: true,
   };
   return (
     <ReactAnimatedWeather
       icon={codeMapping[props.code]}
-      color="#4a4a4a"
-      size={160}
+      color="#4a4a4a "
+      size={defaults.size}
       animate={true}
     />
   );
