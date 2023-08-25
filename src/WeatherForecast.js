@@ -10,14 +10,13 @@ export default function WeatherForecast(props) {
   let [forecast, setForecast] = useState(null);
   function handleResponse(response) {
     setForecast(response.data.daily);
-    setLoaded(true);
   }
   function handleError() {
     return "Loading...";
   }
 
   useEffect(() => {
-    setLoaded(false);
+    setLoaded(true);
   }, [props.coordinates]);
 
   if (loaded) {
@@ -29,7 +28,7 @@ export default function WeatherForecast(props) {
             <div className="WeatherForecast-day">day</div>
 
             <div className="week-forecast-icon mb-2">
-             <WeatherIcon code="01d"/>
+              <WeatherIcon code="01d" size={56} />
             </div>
 
             <div className="WeatherForecast-temperature">
@@ -40,7 +39,7 @@ export default function WeatherForecast(props) {
         </div>
       </div>
     );
- } else {
+  } else {
     let apiKey = "3c2bf98f1595a35c95c1c79689018255";
     //let apiKey = "3c2bf98f1595a35c95c1c79689018255";
     let longitude = props.coordinates.lon;
