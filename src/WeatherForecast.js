@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import "./WeatherForecast.css";
 
-import WeatherIconD from "./WeatherIconD";
+import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherForecast(props) {
   let [loaded, setLoaded] = useState(false);
@@ -16,36 +16,36 @@ export default function WeatherForecast(props) {
     return "Loading...";
   }
 
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.coordinates]);
+
   if (loaded) {
     console.log(forecast);
     return (
       <div className="WeatherForecast ">
         <div className="row mt-3">
           <div className="col">
-            <div className="WeatherForecast-day">{forecast[0].time} </div>
+            <div className="WeatherForecast-day">day</div>
 
             <div className="week-forecast-icon mb-2">
-              <WeatherIconD image={forecast[0].condition.icon_url} />
+             <WeatherIcon code="01d"/>
             </div>
 
             <div className="WeatherForecast-temperature">
-              <span className="WeatherForecast-temperature-max">
-                {forecast[0].temperature.maximum}°
-              </span>{" "}
-              <span className="WeatherForecast-temperature-min">
-                {forecast[0].temperature.minimum}°
-              </span>
+              <span className="WeatherForecast-temperature-max">23°</span>{" "}
+              <span className="WeatherForecast-temperature-min">89°</span>
             </div>
           </div>
         </div>
       </div>
     );
-  } else {
-    let apiKey = "343956b42t678f23abfoa30906bf4370";
+ } else {
+    let apiKey = "3c2bf98f1595a35c95c1c79689018255";
     //let apiKey = "3c2bf98f1595a35c95c1c79689018255";
     let longitude = props.coordinates.lon;
     let latitude = props.coordinates.lat;
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(handleResponse).catch(handleError);
 

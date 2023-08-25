@@ -1,7 +1,4 @@
-import React from "react";
-import ReactAnimatedWeather from "react-animated-weather";
-
-
+/* import React from "react";  
 
  export default function WeatherIconD(props) {
   const iconMap = {
@@ -32,3 +29,4 @@ import ReactAnimatedWeather from "react-animated-weather";
   }
 
  }
+*/
