@@ -188,3 +188,40 @@ footer {
 .dark button {
   color: #dedede;
 }
+
+.dark .week-forecast-icon {
+  color: #dedede;
+}
+
+.dark canvas {
+  margin-top: 10px;
+  color: #dedede;
+}
+
+.dark .week-forecast-icon {
+  color: #dedede;
+}
+
+.dark .iconColor {
+  color: #dedede;
+}
+
+@media (max-width: 800px) {
+  .details {
+    display: none;
+  }
+
+  h1 {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .city-name {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .signature {
+    font-size: 12px;
+  }
+}

@@ -24,7 +24,7 @@ export default function WeatherIcon(props) {
   };
 
   // Default values for the weather icon display
- /* const defaults = {
+  /* const defaults = {
     color: "#976DF3",
     size: 160,
     animate: true,

@@ -9,7 +9,6 @@ export default function WeatherInfo(props) {
     <div className="WeatherInfo">
       <span className="current-date">
         <FormattedDate date={props.data.date} />
-        Today is Saturday, Aug 19 2023 - 12:23 pm
       </span>
       <h1 className="mb-3">
         {props.data.city} - {props.data.country}
@@ -33,7 +32,7 @@ export default function WeatherInfo(props) {
             </span>
           </div>
         </div>
-        <div className="col-6 col-md-4">
+        <div className="col-6 col-md-4 iconColor">
           <WeatherIcon code={props.data.icon} size={150} />
         </div>
         <div className="col-12 col-md-4 weather-icon-big details">

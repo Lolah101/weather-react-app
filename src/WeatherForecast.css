@@ -10,3 +10,18 @@
 .week-forecast-icon {
   font-size: 30px;
 }
+
+.week-forecast-transition {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: all 0.8s ease-out;
+}
+
+.week-forecast-transition.active {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.WeatherForecast-day {
+  font-weight: 500;
+}

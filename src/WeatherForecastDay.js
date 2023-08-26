@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherForecastDay(props) {
+  let [activeClass, setAtiveClass] = useState();
+ 
+
   function maxTemperature() {
     let temperature = Math.round(props.data.temp.max);
     return `${temperature}°`;
@@ -19,12 +22,25 @@ export default function WeatherForecastDay(props) {
 
     return days[day];
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setAtiveClass("active");
+    }, props.activeDelay);
+  }, [props.activeDelay]);
+
+ 
+
   return (
-    <div>
+    <div className={`col-2 week-forecast-transition ${activeClass}`}>
       <div className="WeatherForecast-day">{day()}</div>
 
       <div className="week-forecast-icon mb-2">
-        <WeatherIcon code={props.data.weather[0].icon} size={50} />
+        <WeatherIcon
+          code={props.data.weather[0].icon}
+          size={50}
+         
+        />
       </div>
 
       <div className="WeatherForecast-temperature">
