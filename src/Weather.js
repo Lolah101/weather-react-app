@@ -7,7 +7,7 @@ import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [isLoading, setIsLoading] = useState(true);
+
   const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
@@ -53,7 +53,7 @@ export default function Weather(props) {
   useEffect(() => {
     // initiate the initial search when the component mounts
     search();
-  }, []);
+  }, [search]);
 
   if (weatherData.ready) {
     return (
