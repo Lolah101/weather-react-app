@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Weather.css";
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
@@ -9,7 +9,6 @@ export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   const [city, setCity] = useState(props.defaultCity);
-  const [isLoading, setIsLoading] = useState(false);
 
   function handleResponse(response) {
     setWeatherData({
@@ -29,17 +28,11 @@ export default function Weather(props) {
     });
   }
 
-  function handleError(error) {
-    console.error("Error fetching data:", error);
-    setIsLoading(false);
-  }
-
   function search() {
-    setIsLoading(true);
     const apiKey = "3c2bf98f1595a35c95c1c79689018255";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-    axios.get(apiURL).then(handleResponse).catch(handleError);
+    axios.get(apiURL).then(handleResponse);
   }
 
   function handleSubmit(event) {
@@ -51,10 +44,6 @@ export default function Weather(props) {
   function handleCityChange(event) {
     setCity(event.target.value);
   }
-  useEffect(() => {
-    // initiate the initial search when the component mounts
-    search();
-  }, [search]);
 
   if (weatherData.ready) {
     return (
