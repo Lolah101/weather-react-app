@@ -24,16 +24,16 @@ export default function WeatherIcon(props) {
   };
 
   // Default values for the weather icon display
-  const defaults = {
+ /* const defaults = {
     color: "#976DF3",
     size: 160,
     animate: true,
-  };
+  }; */
   return (
     <ReactAnimatedWeather
       icon={codeMapping[props.code]}
       color="#4a4a4a "
-      size={defaults.size}
+      size={props.size}
       animate={true}
     />
   );

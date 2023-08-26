@@ -34,20 +34,20 @@ export default function WeatherInfo(props) {
           </div>
         </div>
         <div className="col-6 col-md-4">
-          <WeatherIcon code={props.data.icon} />
+          <WeatherIcon code={props.data.icon} size={150} />
         </div>
         <div className="col-12 col-md-4 weather-icon-big details">
           <span className="details">
-            <i class="fa-solid fa-temperature-three-quarters"></i>
+            <i className="fa-solid fa-temperature-three-quarters"></i>
             Feels like: {Math.round(props.data.realFeel)}°c
           </span>
 
           <span className="details">
-            <i class="fa-solid fa-droplet"></i>
+            <i className="fa-solid fa-droplet"></i>
             Humidity: {props.data.humidity}%
           </span>
           <span className="details">
-            <i class="fa-solid fa-wind"></i>
+            <i className="fa-solid fa-wind"></i>
             Wind : {Math.round(props.data.wind)} km/h
           </span>
         </div>
