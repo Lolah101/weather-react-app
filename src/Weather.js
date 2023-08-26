@@ -9,6 +9,7 @@ export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   const [city, setCity] = useState(props.defaultCity);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleResponse(response) {
     setWeatherData({
@@ -26,7 +27,6 @@ export default function Weather(props) {
       realFeel: response.data.main.feels_like,
       coordinates: response.data.coord,
     });
-    setIsLoading(false);
   }
 
   function handleError(error) {
@@ -35,6 +35,7 @@ export default function Weather(props) {
   }
 
   function search() {
+    setIsLoading(true);
     const apiKey = "3c2bf98f1595a35c95c1c79689018255";
     let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
