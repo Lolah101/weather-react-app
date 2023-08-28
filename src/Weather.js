@@ -51,12 +51,6 @@ export default function Weather(props) {
         <div className="row mb-3">
           <div className="col-11 search">
             <form className="input-group" onSubmit={handleSubmit}>
-              <button
-                className="btn btn-outline-secondary location-icon"
-                type="button"
-              >
-                <i className="fa-solid fa-location-dot"></i>
-              </button>
               <input
                 type="search"
                 placeholder="Enter a city . . ."
